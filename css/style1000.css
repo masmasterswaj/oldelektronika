@@ -1,0 +1,559 @@
+    /* ---- GLOWNY ------------------------------------------------------------------------ */
+    #gl1 {
+        width: 1000px;
+        height: 75px;
+        margin: 0px auto;
+        padding-top: 10px;
+    }
+    #gl2 {
+        width: 100%;
+        height: 552px;
+        margin: 0px auto;
+        background: url(../image/tlosrodek8.jpg);
+        background-position: center;
+        border-top: 1px solid #121212;
+        border-bottom: 1px solid #121212;
+    }
+    #menugl {
+        width: 100%;
+        height: 50px;
+        background: #131313;
+        border-top: 1px solid #2d2d2d;
+        border-bottom: 1px solid #2d2d2d;
+    }
+    #gl3 {
+        width: 1000px;
+        height: 100px;
+        margin: 0px auto;
+        padding-top: 10px;
+    }
+    /* ---- TYTUL ------------------------------------------------------------------------- */
+    #tytul {
+        width: 1000px;
+        height: 65px;
+        float: left;
+    }
+    #tytultext1 {
+        font-family: Pogrubiona;
+        font-size: 41px;
+        color:#bcbcbc;
+        line-height: 65px;
+        float: left;
+    }
+    #tytultext2 {
+        font-family: Normalna;
+        font-size: 25px;
+        color:#f3700b;
+        line-height: 65px;
+        float: left;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    /* ---- MENU ------------------------------------------------------------------------- */
+    #menu {
+        width: 1000px;
+        margin: 0px auto;
+        height: 51px;
+        font-family: Normalna;
+        font-size: 18px;
+        color: #fff    ;
+        line-height: 50px;
+    }
+    #menu ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+    }
+    #menu li {
+        height: 48px;
+        float: left;
+        padding: 2px 20px 0px 20px;
+        font-family: Cienka;
+        background: url(../image/menus.jpg);
+        background-position: 0px -50px;
+        cursor: pointer;
+        color: #aaa;
+        text-decoration: none;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+    }
+    #menu li:hover {
+        height: 48px;
+        float: left;
+        padding: 2px 20px 0px 20px;
+        background: url(../image/menus.jpg);
+        background-repeat: repeat-x;
+        font-family: Cienka;
+        cursor: pointer;
+        color: #fe7e00;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+    }
+    #menu a {
+        text-decoration: none;
+        color: #aaa;
+    }
+    /* ---- SLIDER ------------------------------------------------------------------------- */
+
+    /* Style nawigacji na srodku ekranu  */
+    /*
+    .jssorb05 div           (normal)
+    .jssorb05 div:hover     (normal mouseover)
+    .jssorb05 .av           (active)
+    .jssorb05 .av:hover     (active mouseover)
+    .jssorb05 .dn           (mousedown)
+    */
+    .jssorb05 {
+        position: absolute;
+    }
+    .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
+        position: absolute;
+        /* size of bullet elment */
+        width: 16px;
+        height: 16px;
+        background: url('../image/b05.png') no-repeat;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .jssorb05 div { background-position: -7px -7px; }
+    .jssorb05 div:hover, .jssorb05 .av:hover { background-position: -37px -7px; }
+    .jssorb05 .av { background-position: -67px -7px; }
+    .jssorb05 .dn, .jssorb05 .dn:hover { background-position: -97px -7px; }
+
+    /* style nawigacji strzałek po bokach */
+    /*
+    .jssora12l                  (normal)
+    .jssora12r                  (normal)
+    .jssora12l:hover            (normal mouseover)
+    .jssora12r:hover            (normal mouseover)
+    .jssora12l.jssora12ldn      (mousedown)
+    .jssora12r.jssora12rdn      (mousedown)
+    */
+    .jssora12l, .jssora12r {
+        display: block;
+        position: absolute;
+        /* size of arrow element */
+        width: 30px;
+        height: 46px;
+        margin-top: 275px;
+        cursor: pointer;
+        background: url('../image/a12.png') no-repeat;
+        overflow: hidden;
+    }
+    .jssora12l { background-position: -16px -37px; }
+    .jssora12r { background-position: -75px -37px; }
+    .jssora12l:hover { background-position: -136px -37px; }
+    .jssora12r:hover { background-position: -195px -37px; }
+    .jssora12l.jssora12ldn { background-position: -256px -37px; }
+    .jssora12r.jssora12rdn { background-position: -315px -37px; }
+
+    #jssor_1 {
+        position: relative;
+        margin: 0 auto;
+        top: 0px;
+        left: 0px;
+        width: 1000px;
+        height: 550px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    #jssor_2 {
+        position: relative;
+        margin: 0 auto;
+        top: 0px;
+        left: 0px;
+        width: 620px;
+        height: 550px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    #jssor_3 {
+        position: relative;
+        margin: 0 auto;
+        top: 0px;
+        left: 0px;
+        width: 340px;
+        height: 550px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    #slider-zaw {
+        cursor: default;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 950px;
+        height: 550px;
+        overflow: hidden;
+        margin: 0px auto;
+    }
+    /* ---- Slider Loader --------------------------------------------------------------------------------------------------- */
+
+    #loader {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    #loader11 {
+        filter: alpha(opacity=70);
+        opacity: 0.7;
+        position: absolute;
+        display: block;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    #loader12 {
+        position:absolute;
+        display:block;
+        background:url('../image/loading.gif') no-repeat center center;
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+    }
+
+    /* ---- ZDJECIE1 -------------------------------------------------------------------------------------------------------- */
+    #napis1 {
+        width: 330px;
+        height: 400px;
+        float: left;
+        padding-top: 100px;
+        padding-left: 70px;
+        text-align: left;
+
+    }
+    #zdjecie1 {
+        width: 550px;
+        height: 450px;
+        float: right;
+        padding-top: 100px;
+        background: url(../image/obrazek2.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #prostokat1 {
+        width: 75px;
+        height: 7px;
+        background: #fe7e00;
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        margin-bottom: 20px;
+    }
+    #napis11 {
+        font-family: Pogrubiona;
+        font-size: 55px;
+        color: #fe7e00;
+        line-height: 35px;
+        text-shadow: 5px 5px 16px rgba(14, 14, 14, 0.75);
+    }
+    #napis12 {
+        font-family: Pogrubiona;
+        font-size: 25px;
+        color: #fe7e00;
+
+        text-shadow: 5px 5px 16px rgba(14, 14, 14, 0.75);
+    }
+    #napis13 {
+        font-family: Cienka;
+        font-size: 16px;
+        color: #cacaca;
+        margin-top:20px;
+    }
+    /* ---- ZDJECIE2 ------------------------------------------------------------------------- */
+    #napis2 {
+        width: 370px;
+        height: 200px;
+        float: left;
+        padding-top: 250px;
+        padding-left: 30px;
+        text-align: left;
+
+    }
+    #zdjecie2 {
+        width: 500px;
+        height: 550px;
+        float: left;
+        background: url(../image/obrazek1.png);
+        background-repeat: no-repeat;
+        background-position: 30px 50px;
+    }
+    #prostokat2 {
+        width: 75px;
+        height: 7px;
+        background: #fe7e00;
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        margin-bottom: 20px;
+        margin-left: 295px;
+    }
+    #napis21 {
+        font-family: Pogrubiona;
+        font-size: 45px;
+        color: #fe7e00;
+        line-height: 30px;
+        text-shadow: 5px 5px 16px rgba(14, 14, 14, 0.75);
+        text-align: right;
+    }
+
+    #napis23 {
+        font-family: Cienka;
+        font-size: 16px;
+        color: #cacaca;
+        text-align: right;
+        margin-top:20px;
+    }
+    /* ---- ZDJECIE3 ------------------------------------------------------------------------------------------------------------ */
+    #napis3 {
+        width: 400px;
+        height: 200px;
+        float: left;
+        padding-top: 247px;
+        padding-left: 70px;
+        text-align: left;
+
+    }
+    #zdjecie3 {
+        width: 425px;
+        height: 450px;
+        float: right;
+        padding-top: 50px;
+        padding-right: 10px;
+        background: url(../image/obrazek3.png);
+        background-repeat: no-repeat;
+        background-position: 30px 50px;
+    }
+    #prostokat3 {
+        width: 75px;
+        height: 7px;
+        background: #fe7e00;
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        margin-bottom: 20px;
+        margin-left: 323px;
+    }
+    #napis31 {
+        font-family: Pogrubiona;
+        font-size: 45px;
+        color: #fe7e00;
+        line-height: 30px;
+        text-shadow: 5px 5px 16px rgba(14, 14, 14, 0.75);
+        text-align: right;
+    }
+
+    #napis33 {
+        font-family: Cienka;
+        font-size: 16px;
+        color: #cacaca;
+        text-align: right;
+        margin-top:20px;
+    }
+    #linia2 {
+        float: left;
+        margin-top: 235px;
+        width:40px;
+        height:212px;
+        border-right: 1px solid #92908b;
+    }
+    /* ---- KATEGORIE ----------------------------------------------------------------------------------------------------------- */
+    .kattytul1 {
+        font-family: Normalna;
+        font-size: 36px;
+        color: #fe7e00;
+        padding-top:20px;
+        padding-left: 60px;
+        float: left;
+        text-shadow: 5px 5px 16px rgba(14, 14, 14, 0.75);
+    }
+    .kattytul2 {
+        font-family: Cienka;
+        font-size: 18px;
+        color: #cacaca;
+        padding-top:36px;
+        float:left;
+        padding-left: 10px;
+    }
+    .kat11 {
+        width: 940px;
+        height: 430px;
+        overflow: hidden;
+        padding-top: 30px;
+        margin-left: 105px;
+    }
+    .kat1 {
+        width: 236px;
+        height: 393px;
+        background-image: url(../image/katwybora.png);
+        background-repeat: no-repeat;
+        float: left;
+        margin-right: 40px;
+        font-family: Cienka;
+        font-size: 16px;
+        color: #cacaca;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+    }
+    .kat1:hover {
+        width: 236px;
+        height: 393px;
+        background-image: url(../image/katwyborb.png);
+        background-repeat: no-repeat;
+        float: left;
+        margin-right: 40px;
+        font-family: Cienka;
+        font-size: 16px;
+        color: #000;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+    }
+    .kat1 img {
+        margin: 50px 0px -20px 19px;
+    }
+    .kat1text {
+        padding:0px 25px 0px 25px;
+        text-align: center;
+    }
+
+    .menus {
+        width: 129px;
+        height: 42px;
+        background-image: url(../image/button.png);
+        background-repeat:no-repeat;
+        margin-top: 17px;
+        margin-left: 55px;
+    }
+    .menus:hover {
+        width: 129px;
+        height: 42px;
+        background-image: url(../image/button2.png);
+        background-repeat:no-repeat;
+        margin-top: 17px;
+        margin-left: 55px;
+    }
+    #menus1 {
+        margin-left: 0px;
+    }
+    #menus1:hover {
+        margin-left: 0px;
+    }
+    #menus11 {
+        margin-left: 242px;
+    }
+    #menus11:hover {
+        margin-left: 242px;
+    }
+    #menus12 {
+        margin-left: 270px;
+    }
+    #menus12:hover {
+        margin-left: 270px;
+    }
+
+    /* ---- URZADDZENIA ----------------------------------------------------------------------------------------------------------- */
+
+    .napisUrzadz {
+        width: 900px;
+        height: 30px;
+        margin: 10px 0px 20px 50px;
+    }
+    .tekstUrzadz {
+        font-family: Normalna;
+        font-size: 27px;
+        color: #fe7e00;
+        text-shadow: 5px 5px 16px rgba(14, 14, 14, 0.75);
+    }
+    .prostokat4 {
+        width: 75px;
+        height: 7px;
+        background: #fe7e00;
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(14, 14, 14, 0.75);
+        margin-top: 7px;
+        margin-left: 2px;
+    }
+    .urzadzenia {
+        width: 360px;
+        height: 430px;
+        margin-left: 100px;
+        float: left;
+
+    }
+    .urzadzenie {
+        width: 340px;
+        height: 121px;
+        background-image: url(../image/urzadzwyborb.png);
+        margin-top: 20px;
+        font-family: Cienka;
+        font-size: 15px;
+        color: #cacaca;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+    }
+    .urzadzenie:hover {
+        width: 340px;
+        height: 121px;
+        background-image: url(../image/urzadzwybora.png);
+        margin-top: 20px;
+        font-family: Cienka;
+        font-size: 15px;
+        color: #000;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+    }
+    .urzadzenie img{
+        margin: 2px 0px 0px 20px;
+        float: left;
+    }
+    .tekstUrzadzW {
+        width: 140px;
+        float: left;
+        margin: 22px 0px 10px 16px;
+    }
+    .smallbutton {
+        width: 101px;
+        height: 32px;
+        float: left;
+        margin-left: 16px;
+        background-image: url(../image/smallbuttona.png);
+    }
+    .smallbutton:hover {
+        width: 101px;
+        height: 32px;
+        float: left;
+        margin-left: 16px;
+        background-image: url(../image/smallbuttonb.png);
+    }
+    .linia4 {
+        position: absolute;
+        width: 5px;
+        height: 440px;
+        border-right: 1px solid #353535;
+        float: left;
+        margin-left: 493px;
+    }
+
+
+

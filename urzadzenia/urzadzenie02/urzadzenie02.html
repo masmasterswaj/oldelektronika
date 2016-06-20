@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Elektronika zpoprzedniej epoki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="pl" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <script src="../../js/jquery-2.1.4.min.js"></script>
+    <script src="../../js/jquery.mobile-1.1.0.min.js"></script>
+    <script src="../../js/jquery.easing.compatibility.js"></script>
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/slider/jssor.slider.min.js"></script>
+    <script src="../../js/scrollbars/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link rel="stylesheet" href="../../js/icon/style.css" />
+    <link rel="stylesheet" href="../../js/scrollbars/jquery.mCustomScrollbar.css" />
+    <link rel="stylesheet" media="(min-width:958px)" href="../../css/styleurz1000.css" />
+    <link rel="stylesheet" media="(max-width:957px) and (min-width:581px)" href="../../css/styleurz600.css" />
+    <link rel="stylesheet" media="(max-width:580px)" href="../../css/styleurz300.css" />
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="../../js/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="../../js/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="../../js/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <style>
+         /* ---- BODY i FONTS ------------------------------------------------------------------- */
+        /* http://www.fontsquirrel.com/tools/webfont-generator */
+        @font-face {
+            font-family: 'Pogrubiona';
+            src: url('../../image/fonts/klavikabasic-bold-webfont.eot');
+            src: url('../../image/fonts/klavikabasic-bold-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('../../image/fonts/klavikabasic-bold-webfont.woff2') format('woff2'),
+                 url('../../image/fonts/klavikabasic-bold-webfont.woff') format('woff'),
+                 url('../../image/fonts/klavikabasic-bold-webfont.ttf') format('truetype'),
+                 url('../../image/fonts/klavikabasic-bold-webfont.svg#klavika_basicbold') format('svg');
+            font-weight: normal;
+            font-style: normal;
+
+        }
+
+        @font-face {
+            font-family: 'Normalna';
+            src: url('../../image/fonts/klavikabasic-regular-webfont.eot');
+            src: url('../../image/fonts/klavikabasic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('../../image/fonts/klavikabasic-regular-webfont.woff2') format('woff2'),
+                 url('../../image/fonts/klavikabasic-regular-webfont.woff') format('woff'),
+                 url('../../image/fonts/klavikabasic-regular-webfont.ttf') format('truetype'),
+                 url('../../image/fonts/klavikabasic-regular-webfont.svg#klavika_basic_regularregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+
+        }
+
+        @font-face {
+            font-family: 'Cienka';
+            src: url('../../image/fonts/klavikabasic-light-webfont.eot');
+            src: url('../../image/fonts/klavikabasic-light-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('../../image/fonts/klavikabasic-light-webfont.woff2') format('woff2'),
+                 url('../../image/fonts/klavikabasic-light-webfont.woff') format('woff'),
+                 url('../../image/fonts/klavikabasic-light-webfont.ttf') format('truetype'),
+                 url('../../image/fonts/klavikabasic-light-webfont.svg#klavika_basiclight') format('svg');
+            font-weight: normal;
+            font-style: normal;
+
+        }
+        .fancybox-skin {
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function(){
+            //Pelen ekran dla wersji mobilnej
+                if(navigator.userAgent.match(/Android/i)){
+                    window.scrollTo(0,1);
+                }
+            //Zaladowanie scrollbars
+                $(window).load(function(){
+                    $("#opis").mCustomScrollbar();
+                    $("#parametry").mCustomScrollbar();
+                    $("#schemat").mCustomScrollbar();
+                    $("#galeria").mCustomScrollbar();
+                    $("#gl").mCustomScrollbar();
+                });
+            //Parametry dla danego urzadzenia
+                var urzadz = '02';
+            //Okreslanie dlugosci okna przegladarki -----------------------------------------------------------------------------
+            //Tablica dlugosci dla okna - 3 tryby responsywnosci
+                var winWidth = new Array();
+                winWidth[0] = [958,5000,550];
+                winWidth[1] = [581,957,550];
+                winWidth[2] = [300,580,430];
+
+            //Funckja określająca długość okna przeglądarki
+                function windowWidth(){
+                    var dlugosc = window.innerWidth||document.body.clientWidth;
+                    return dlugosc;
+                    }
+            //Funckja określająca wysokosc okna przeglądarki
+                function windowHeight(){
+                    var wysokosc = window.innerHeight||document.body.clientHeight;
+                    return wysokosc;
+                    }
+            //Funkcja wybierajaca numer zakresu rozdzielczości na podstawie tablicy winWidth
+                function nrWidth(){
+                    for(i=0;i<winWidth.length;i++){
+                        if(windowWidth() >= winWidth[i][0] && windowWidth() <= winWidth[i][1])
+                            return i;
+                        }
+                    }
+            //Przyciski i okienka -----------------------------------------------------------------------------------------------
+                var button = 'menu1';
+                //Funkcja ustalajaca aktywnosc przycisków w menu oraz wysokosc okien opisów -------------------------------------
+                function autoszerokosc(opisdl,opiswys,gl2){
+                    if(button == 'menu1'){
+                        //usuwanieatrybutow stylii dla elementow menu oraz opisow
+                        $('#opis,#parametry,#schematy,#galeria').removeAttr('style');
+                        $('#menu1,#menu2,#menu3,#menu4').removeAttr('style');
+                        //nadanie styli w formie atrybutow dla aktywnego opisu i elementu menu w zaleznosci od responsywnosci
+                        if(nrWidth() == 0) {
+                            //Ustawienie stylii i atrybutow menu i opisow dla urzadzen PC oraz duzych rozdzielczosci
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:'+gl2);
+                            $('#opis').attr('style','width:'+opisdl+';height:'+opiswys);
+                            $('#parametry').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#schematy').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#galeria').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#linia').attr('style','height:'+opiswys);
+                        }else{
+                            //ustawienie stylii i atrybutow dla menu i opisów dla urzadzen mobilnych i malych rozdzielczosci
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:auto');
+                            $('#opis').attr('style','width:auto;height:auto');
+                            $('#parametry').attr('style','width:auto;height:auto;display:none');
+                            $('#schematy').attr('style','width:auto;height:auto;display:none');
+                            $('#galeria').attr('style','width:auto;height:auto;display:none');
+                        }
+                        //Wcisniecie przycisku aktywnego elementu menu.
+                        $('#menu1').css({backgroundImage: 'url(../../image/opisb.png)'});
+                    }
+                    if(button == 'menu2'){
+                        $('#opis,#parametry,#schematy,#galeria').removeAttr('style');
+                        $('#menu1,#menu2,#menu3,#menu4').removeAttr('style');
+                        if(nrWidth() == 0) {
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:'+gl2);
+                            $('#opis').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#parametry').attr('style','width:'+opisdl+';height:'+opiswys);
+                            $('#schematy').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#galeria').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#linia').attr('style','height:'+opiswys);
+                        }else{
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:auto');
+                            $('#opis').attr('style','width:auto;height:auto;display:none');
+                            $('#parametry').attr('style','width:auto;height:auto');
+                            $('#schematy').attr('style','width:auto;height:auto;display:none');
+                            $('#galeria').attr('style','width:auto;height:auto;display:none');
+                        }
+                        $('#menu2').css({backgroundImage: 'url(../../image/parametryb.png)'});
+                    }
+                    if(button == 'menu3'){
+                        $('#opis,#parametry,#schematy,#galeria').removeAttr('style');
+                        $('#menu1,#menu2,#menu3,#menu4').removeAttr('style');
+                        if(nrWidth() == 0) {
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:'+gl2);
+                            $('#opis').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#parametry').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#schematy').attr('style','width:'+opisdl+';height:'+opiswys);
+                            $('#galeria').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#linia').attr('style','height:'+opiswys);
+                        }else{
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:auto');
+                            $('#opis').attr('style','width:auto;height:auto;display:none');
+                            $('#parametry').attr('style','width:auto;height:auto;display:none');
+                            $('#schematy').attr('style','width:auto;height:auto');
+                            $('#galeria').attr('style','width:auto;height:auto;display:none');
+                        }
+                        $('#menu3').css({backgroundImage: 'url(../../image/schematyb.png)'});
+                    }
+                    if(button == 'menu4'){
+                        $('#opis,#parametry,#schematy,#galeria').removeAttr('style');
+                        $('#menu1,#menu2,#menu3,#menu4').removeAttr('style');
+                        if(nrWidth() == 0) {
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:'+gl2);
+                            $('#opis').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#parametry').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#schematy').attr('style','width:'+opisdl+';height:'+opiswys+';display: none');
+                            $('#galeria').attr('style','width:'+opisdl+';height:'+opiswys);
+                            $('#linia').attr('style','height:'+opiswys);
+                        }else{
+                            $('#gl2').removeAttr('style');
+                            $('#gl2').attr('style','height:auto');
+                            $('#opis').attr('style','width:auto;height:auto;display:none');
+                            $('#parametry').attr('style','width:auto;height:auto;display:none');
+                            $('#schematy').attr('style','width:auto;height:auto;display:none');
+                            $('#galeria').attr('style','width:auto;height:auto');
+                        }
+                        $('#menu4').css({backgroundImage: 'url(../../image/galeriab.png)'});
+                    }
+                }
+            //Ustalenie wielkosci zdjecia na podstawie responsywnosci -----------------------------------------------------------
+                function csszdjecie(){
+
+                    if(nrWidth() == 0){
+                        //usuniecie obiektow zdjecia z drzewa DOM
+                        $('.zdjecie').remove();
+                        //utworzenie obiektu div dla zdjecia oraz okreslenie jego elementow
+                        var zdjecie = $('<div class="zdjecie"></div>');
+                        //dodanie obiektu zdjecia na poczatku struktury gl2
+                        $('#gl2').prepend(zdjecie);
+                        //ustalenie atrybutow dla nowego zdjecia
+                        $('.zdjecie').attr(
+                            'style',
+                            'width:300px;height:400px;background-image:url(../../urzadzenia/urzadzenie'+urzadz+'/u'+urzadz+'a.png)'
+                        );
+                    }
+                    if(nrWidth() == 1 || nrWidth() == 2){
+                        //usuniecie obiektow zdjecia z drzewa DOM
+                        $('.zdjecie').remove();
+                        //utworzenie obiektu div dla zdjecia oraz okreslenie jego elementow
+                        var zdjecie = $('<div class="zdjecie"></div>');
+                        //dodanie obiektu zdjecia na poczatku struktury gl2
+                        $('#gl2').prepend(zdjecie);
+                        //ustalenie atrybutow dla nowego zdjecia
+                        $('.zdjecie').attr(
+                            'style',
+                            'width:250px;height:240px;background-image:url(../../urzadzenia/urzadzenie'+urzadz+'/u'+urzadz+'b.png)'
+                        );
+                    }
+                }
+            //Okreslenie zmiennych globalnych wysokosci i dlugosci okna ---------------------------------------------------------
+                var dl = windowWidth();
+                var wys = windowHeight();
+                //Obliczenie wysokosci okien opisow w zaleznosci od ustawienia responsywnosci -----------------------------------
+                var opisdl = (dl-390)+"px";
+                var opiswys =(wys-200)+"px";
+                var gl2 =(wys-130)+"px";
+                autoszerokosc(opisdl,opiswys,gl2);
+            //Aktywnosc menu - ustalenie akcji dla poszczegolnych okien opisow w zaleznosci od kliknietego elementu menu --------
+                $('#menu1,#menu2,#menu3,#menu4').click(function(){
+                    //pobranie dlugosci i wysokosci okna aktywnego popup
+                    dl = windowWidth();
+                    wys = windowHeight();
+                    //obiczenie wysokosci i dlugosci elementow opisu dla urzadzen PC i duzych rozdzieloczosci
+                    var opisdl = (dl-390)+"px";
+                    var opiswys =(wys-200)+"px";
+                    var gl2 =(wys-130)+"px";
+                    //okreslenie ID kliknietego menu - ustawienie zmiennej globalnej button
+                    if($(this).attr("id") != null) {
+                        button = $(this).attr("id");
+		              }else{
+                        button = 'menu1';
+                      }
+                    //wywolanie funkcji ustalajacej szerokosc i wysokosc opisow oraz aktywnosci elementow menu
+                    autoszerokosc(opisdl,opiswys,gl2);
+                });
+            //Ustawienia dla okienka fancybox ----------------------------------------------------------------------------------
+                $(".various").fancybox({
+                    'type': 'iframe',
+                    'scrolling': 'no',
+                    'iframe': {'scrolling': 'no'},
+                    maxWidth	: 1000,
+                    maxHeight	: 600,
+                    padding: 1,
+                    fitToView	: false,
+                    width		: '100%',
+                    height		: '100%',
+                    autoSize	: false,
+                    closeClick	: false,
+
+                    openEffect  : 'fade',
+                    closeEffect : 'fade',
+
+                    openEffect : 'fade',
+                    openSpeed  : 800,
+                    scrolling : 'no',
+
+                    closeEffect : 'fade',
+                    closeSpeed  : 800,
+                });
+            //Funkcja skalowania okna przy zmianie rozdzielczosci ---------------------------------------------------------------
+                function ScaleWindow() {
+
+                    var dlugosc = windowWidth();
+                    var wysokosc = windowHeight();
+                    //sprawdzenie czy rozdzielczosc ulegla zmianie
+                    if(dlugosc != dl || wysokosc != wys){
+                         dl = windowWidth();
+                         wys = windowHeight();
+                        //obliczenie dlugosci i wysokosci opisow dla danej rozdzielczosci
+                        var opisdl = (dl-390)+"px";
+                        var opiswys =(wys-200)+"px";
+                        var gl2 =(wys-130)+"px";
+                        var gl =(wys-20)+"px";
+                        //wywolanie funkcji ustalajacej szerokosc i wysokosc opisow oraz aktywnosci elementow menu
+                        autoszerokosc(opisdl,opiswys,gl2);
+                        //ustalenie polozenia i styli dla zdjecia urzadzenia w zaleznosci od rozdzieloczosci
+                        csszdjecie();
+                        //Ustalenie wysokosci okna dla kontenera GL w celu uruchomiania scrollbar
+                        if(nrWidth() == 2 || nrWidth() == 1){
+                            $('#gl').attr('style','height:'+gl);
+                        }
+
+                        console.log('dlugosc: '+opisdl+' wysokosc: '+opiswys);
+                    }
+                    console.log('dlugosc: '+dlugosc+' wysokosc: '+wysokosc);
+
+                    }
+                //wywolanie funkcji responsywnosci
+                ScaleWindow();
+                //Sprawdzenie i wywolanie funkcji skalowania okna w zaleznosci od responsywnsci ---------------------------------
+                $(window).resize(function(){
+                    ScaleWindow();
+                });
+                var wysgl =  $("gl").height();
+                console.log('wysokosc GL:' + wysgl);
+            });
+
+        </script>
+        <div id="gl">
+        <div id="gl1">
+            <div id="tytul">
+                <div id="prostokat"></div>
+                <div id="tytultext1">Kolumny Tonsil Altus 150</div>
+            </div>
+            <div id="menu">
+                <div id="menu1"></div>
+                <div id="menu2"></div>
+                <div id="menu3"></div>
+                <div id="menu4"></div>
+            </div>
+        </div>
+        <div id="gl2">
+            <div id="linia"></div>
+            <div id="opis">
+                <h3>Opis urządzenia</h3>
+                Lorem ipsum dolor sit amet sagittis lorem. Cras eu condimentum et, felis. Morbi mattis et, eros. Aliquam erat lacinia dapibus, libero dui, fermentum leo at sagittis leo, pretium vitae, vestibulum id, vulputate a, faucibus in, purus. Pellentesque placerat. Vivamus lacus. Nunc id sapien id erat volutpat. Nam urna. Sed lacinia, urna fringilla et, neque. Donec non mi. Aliquam fermentum molestie vitae, pede. Vestibulum vulputate. Morbi nibh. Maecenas wisi. Phasellus pulvinar sed, fermentum vel, consequat eu, fringilla sit amet quam sagittis vel, consectetuer adipiscing elit. Aenean nonummy justo arcu, rutrum magna auctor est, et metus. Vestibulum euismod at, congue sem. Nulla vitae massa lacinia scelerisque, dui vitae massa. Duis dictum. Curabitur ornare laoreet. Aenean mollis non, consectetuer tincidunt varius laoreet. Sed sagittis luctus, quam sed turpis. Duis ut aliquet molestie. Quisque lorem scelerisque tellus pharetra porttitor vel, quam. Aliquam nisl. Vestibulum ante ullamcorper ut, semper quis, feugiat pulvinar. Morbi urna vitae libero dolor, rhoncus aliquam enim. Phasellus metus mi odio, fermentum eget, dictum velit, rhoncus et, lobortis convallis, dui sed felis odio nec leo velit pretium wisi. Suspendisse gravida. Duis luctus.
+
+                Vivamus vitae sagittis eget, eros. Sed fringilla vel, consectetuer at, cursus quis, orci. Mauris at magna. Nulla faucibus orci viverra enim vehicula convallis viverra, est sit amet, consectetuer lectus, viverra sed, ultrices posuere, odio. Nam quis enim aliquam risus libero, id quam. Nam vestibulum. Etiam urna. Nam varius lectus. Phasellus vulputate sagittis, nunc eget elit porttitor rutrum. In tempus. Morbi pede. Mauris et quam purus, dictum a, dui. Morbi urna tellus pede purus, dictum accumsan. Quisque neque ut lobortis diam. Aliquam vel bibendum a, ligula. Lorem ipsum dolor in est ultricies porta sit amet justo. Vestibulum convallis at, mauris. Aliquam id risus. Donec pulvinar nonummy sodales rutrum, lorem eros orci id lacus. Aenean urna quam, lobortis volutpat. Vestibulum leo. Nulla hendrerit purus. Duis vel leo. In hac habitasse platea dictumst. Proin at ipsum vitae lorem a lorem nec egestas consequat lobortis sed, imperdiet tempor, sapien mauris nibh ac risus. Sed accumsan et, congue porta, est eu libero. Vestibulum rutrum ac, ornare velit tempus ac, dictum commodo, odio condimentum ac, sodales sapien massa volutpat eu, pulvinar sem leo sodales in, ante.
+            </div>
+
+            <div id="parametry">
+                <h3>Parametry</h3>
+                Lorem ipsum dolor sit amet dolor. Vivamus consequat nunc.
+                Etiam condimentum ligula, in faucibus mollis. Nulla facilisi.
+                Etiam tempor magna arcu, imperdiet felis, volutpat enim porttitor
+                lacus scelerisque viverra. <br />Cras turpis in erat vitae lorem urna eget tortor. <br />
+                Suspendisse potenti. <br />Cras lacus vestibulum ac, varius egestas, nulla eu diam.<br />
+                Duis aliquam, nulla sed felis sollicitudin mauris id lorem pretium sit amet, consectetuer elit.<br />
+                Sed euismod nulla ac nibh ac orci magna vitae lacinia dapibus, libero ac turpis egestas. Suspendisse <br />facilisis pellentesque eget, wisi. Praesent ac nibh vel lectus. Phasellus at ipsum dolor sit amet lacus. Duis ornare a, imperdiet nec, eros. Maecenas fermentum erat. Quisque pharetra, urna dapibus vel, augue. Fusce nulla. Aliquam bibendum, urna orci elit, non eros lacus, congue eget, pede. Suspendisse est. Maecenas elit rhoncus ut, dolor. Pellentesque dapibus non, tristique tempus rutrum ac, felis. Morbi dui turpis nec augue. Vestibulum ante euismod quis, congue tellus, elementum odio neque, quis enim. Duis luctus et wisi. Praesent faucibus. Nulla facilisi. Phasellus pulvinar mollis, metus. Curabitur tincidunt vel, sapien. Maecenas tortor vehicula dolor nibh, sed justo. Vestibulum a elit.
+
+                In accumsan cursus aliquam. Nunc varius egestas, justo nibh, interdum ligula non nisl sapien facilisis hendrerit. Sed diam tempor diam leo at eros. Suspendisse eu sem ipsum, congue odio quis diam in turpis et malesuada tristique, convallis posuere. Quisque ornare vitae, lectus. Vivamus ullamcorper at, auctor congue dolor. Vestibulum ante eget sem orci, viverra venenatis arcu. Morbi eleifend. Nulla posuere metus. Maecenas lacus. Maecenas pellentesque adipiscing elit. Curabitur imperdiet, nisl tristique sem. Integer hendrerit wisi. Proin id erat eget orci luctus leo at justo nibh, fermentum orci luctus augue eu lectus eu wisi. Vestibulum sollicitudin. Praesent quis quam hendrerit ultricies. Donec odio condimentum vitae, dolor. Vivamus metus sed nulla eu nisl erat volutpat. Maecenas eget felis. Curabitur volutpat metus. Etiam non diam. Fusce wisi eu magna ultrices posuere ante imperdiet tempor, pede quis felis vitae nunc ac lacus. Vivamus dignissim non, lobortis sed, congue ac, molestie venenatis pede. Nullam rutrum consectetuer elit. Sed adipiscing quam in aliquam enim. Cras iaculis dignissim id, condimentum ultricies, hendrerit feugiat tempus. Morbi nibh. Donec at fermentum diam ac ipsum. Fusce purus lacinia at, velit.
+
+                Proin dui pulvinar risus. Mauris eget commodo porta. Quisque nec lectus felis cursus dignissim enim ac purus. Aenean commodo convallis purus. Fusce ullamcorper ultrices consectetuer. Aliquam fermentum sapien dui vel pede. Cras magna fringilla non, fringilla orci. Integer posuere egestas sit amet dui. Aenean ut urna felis, interdum rhoncus, dui imperdiet faucibus in, dolor. Donec elit. Curabitur urna et magnis dis parturient montes, nascetur ridiculus mus. Nunc eleifend congue. Proin ultrices posuere tristique magna nec elementum nunc. Vestibulum ante ante, luctus et netus et magna. Praesent feugiat. Proin urna. Nam vestibulum et, bibendum libero nunc, lobortis condimentum faucibus lectus eget elit aliquet eu, posuere egestas ac, augue. Duis sed est et quam leo, pretium eget, elementum vitae, nunc. Nunc ultricies a, mattis feugiat augue ut urna ullamcorper id, congue sem. Quisque nunc. Duis condimentum lorem eu mi quam fermentum consectetuer. Sed congue, aliquet ultrices posuere cubilia Curae, In euismod. Donec ut malesuada fames ac lacus. Nulla varius, sem ipsum, vel nulla. Phasellus urna a enim luctus et netus et imperdiet faucibus, dolor sit amet mauris. Aenean vel massa. Phasellus in.
+           </div>
+            <div id="schematy">
+                <h3>Schemat</h3>
+                Proin dui pulvinar risus. Mauris eget commodo porta. Quisque nec lectus felis cursus dignissim enim ac purus. Aenean commodo convallis purus. Fusce ullamcorper ultrices consectetuer. Aliquam fermentum sapien dui vel pede.
+                <a href="01.pdf"  class="various" data-fancybox-type="iframe"><div class="pobierz"></div></a>
+                </div>
+        </div>
+        </div>
+    </body>
+</html>
